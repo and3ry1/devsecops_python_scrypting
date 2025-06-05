@@ -6,6 +6,9 @@ import random
 import time
 import os
 from dotenv import load_dotenv
+from logger import logger
+
+
 load_dotenv()
 # fake_api.py
 
@@ -13,6 +16,9 @@ load_dotenv()
 app = FastAPI()
 API_TOKEN = os.getenv('API_TOKEN', 'your_default_token_here')
 
+
+#middleware pour vérifier le token d'authentification
+# Si le token n'est pas présent ou incorrect, renvoie une erreur 401 Unauthorized
 @app.middleware('http')
 async def check_token(request: Request, call_next):
   auth = request.headers.get('Authorization')
@@ -48,4 +54,5 @@ def login(data: LoginData):
     if not data.username.strip() or not data.password.strip():
         raise HTTPException(status_code=400, detail='Username and password are required')
     return {"token": API_TOKEN}
+
 
