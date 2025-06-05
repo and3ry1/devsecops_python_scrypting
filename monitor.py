@@ -61,8 +61,10 @@ def save_report(data, app_name):
     filename = f"reports/{date_str}-{app_name}.json"
     with open(filename, "w") as f:
         json.dump(data, f, indent=4)
+# monitorer plusieurs applications à partirt d'un fichier apps.txt ou d'une variable d'environnement APPS
 
 def main():
+    APPS = load_apps()
     for app_name in APPS:
         status = get_status(app=app_name.strip())
         if 'error' in status:
