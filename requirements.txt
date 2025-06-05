@@ -2,6 +2,7 @@ requests
 python-dotenv
 fastapi
 uvicorn
-mysql-connector-python # facultatif pour bonus
+mysql-connector-python
+# facultatif pour bonus
 
 
