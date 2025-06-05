@@ -11,7 +11,15 @@ load_dotenv()
 
 API_TOKEN = os.getenv('API_TOKEN', 'your_default_token_here')
 API_URL = os.getenv('API_URL', 'http://127.0.0.1:8000/status')
-APPS = os.getenv('APPS', 'my_app').split(',')
+
+def load_apps():
+    apps = []
+    if os.path.exists('apps.txt'):
+        with open('apps.txt', 'r') as f:
+            apps = f.read().splitlines()
+    else:
+        apps = os.getenv('APPS', 'my_app').split(',')
+    return [app.strip() for app in apps if app.strip()]
 
 # Crée les dossiers nécessaires
 os.makedirs("logs", exist_ok=True)

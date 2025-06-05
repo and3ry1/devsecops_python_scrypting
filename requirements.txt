@@ -4,5 +4,8 @@ fastapi
 uvicorn
 mysql-connector-python
 # facultatif pour bonus
+bandit -r
+audit
+
 
 
