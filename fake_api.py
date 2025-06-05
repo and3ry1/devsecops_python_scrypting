@@ -6,7 +6,7 @@ import random
 import time
 import os
 from dotenv import load_dotenv
-from app.logger import logger  # ✅ Import du logger ici
+from logger import logger
 
 load_dotenv()
 
